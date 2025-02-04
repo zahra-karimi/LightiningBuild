@@ -1,16 +1,15 @@
 import express from "express";
-import cors from "cors";
-import dotenv from "dotenv";
 
-dotenv.config();
 const app = express();
+const port = 5000; // You can change the port if needed
 
-app.use(cors());
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.json({ message: "JobFit AI API is running" });
+// A simple route for testing the backend
+app.get('/api', (req, res) => {
+  res.json({ message: 'Hello from Express API!' });
 });
 
-const PORT = process.env.PORT || 5001;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(port, () => {
+  console.log(`Express server running on http://localhost:${port}`);
+});
