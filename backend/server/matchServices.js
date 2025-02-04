@@ -68,7 +68,7 @@ export const parseResume = (resumeText) => {
     return (matchedSkills.length / totalJobSkills) * 100;
   };
  
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const openai = new OpenAI({ apiKey: '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'});
 
 export async function generateCoverLetter(resumeText, jobText) {
   try {
