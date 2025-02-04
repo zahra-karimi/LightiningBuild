@@ -13,6 +13,8 @@ app.use(cors({
 
 app.use(express.json());
 
+
+
 // A simple route for testing the backend
 app.get('/api', (req, res) => {
   res.json({ message: 'Hello from Express API!' });
