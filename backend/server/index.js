@@ -1,5 +1,5 @@
 import express from "express";
-import { parseResume, parseJobDescription, matchPortfolio } from "./matchServices.js";
+import { parseResume, parseJobDescription, matchPortfolio, generateCoverLetter} from "./matchServices.js";
 
 const app = express();
 const port = 5000;
@@ -48,6 +48,17 @@ app.post("/api/match", async (req, res) => {
         res.json(matchResult);
     } catch (error) {
         res.status(500).json({ success: false, message: "Error matching resume with job description" });
+    }
+});
+
+// Generate cover letter based on job description and resume
+app.post("/api/cover-letter", async (req, res) => {
+    const { resumeText, jobText } = req.body;
+    try {
+        const coverLetter = await generateCoverLetter(resumeText, jobText);
+        res.json({ success: true, coverLetter });
+    } catch (error) {
+        res.status(500).json({ success: false, message: "Error generating cover letter" });
     }
 });
 
