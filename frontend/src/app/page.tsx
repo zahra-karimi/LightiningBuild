@@ -32,7 +32,7 @@ export default function Home() {
       <h1 className="text-2xl font-bold text-center">JobSearch Made Easy</h1><br></br>
       <p>Paste your resume here to find the job that matches your Profile.</p><br></br>
 
-      <div className="flex space-x-4">
+      <div className="flex space-x-4 w-full">
         <textarea
           className="w-full h-40 p-2 border"
           placeholder="Paste your Resume Here"

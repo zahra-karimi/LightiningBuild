@@ -6,8 +6,8 @@ const port = 5000;
 
 import cors from "cors";
 app.use(cors({
-  origin: 'http://localhost:3000',  // Allow requests from React frontend
-  methods: ['GET', 'POST'],  // Allow specific methods
+  origin: 'http://localhost:3000', 
+  methods: ['GET', 'POST'], 
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
