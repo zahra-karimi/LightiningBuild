@@ -1,3 +1,4 @@
+import OpenAI from "openai";
 
 // Function to parse the resume text (e.g., extract skills, experience, etc.)
 export const parseResume = (resumeText) => {
@@ -78,3 +79,34 @@ export const parseResume = (resumeText) => {
     return (matchedSkills.length / totalJobSkills) * 100;
   };
   
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY, // Ensure you have your OpenAI API key
+});
+
+export async function generateCoverLetter(resumeText, jobText) {
+  try {
+    const prompt = `
+      Generate a professional cover letter based on the following resume and job description.
+
+      Resume:
+      ${resumeText}
+
+      Job Description:
+      ${jobText}
+
+      The cover letter should highlight relevant skills and experiences from the resume that match the job description.
+      Ensure it is well-structured, personalized, and professional.
+    `;
+
+    const response = await openai.completions.create({
+      model: "gpt-4",
+      messages: [{ role: "system", content: prompt }],
+      max_tokens: 500,
+    });
+
+    return response.choices[0].message.content.trim();
+  } catch (error) {
+    console.error("Error generating cover letter:", error);
+    throw new Error("Failed to generate cover letter.");
+  }
+}
