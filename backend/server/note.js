@@ -1,6 +1,6 @@
 
 import express from "express";
-import { parseResume, parseJobDescription, matchPortfolio, generateCoverLetter } from "./services/matchService.js";
+import { parseResume, parseJobDescription, matchPortfolio, generateCoverLetter } from "../services/matchService.js";
 
 const app = express();
 app.use(express.json());

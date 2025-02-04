@@ -1,11 +1,15 @@
 import express from "express";
-import { parseResume, parseJobDescription, matchPortfolio } from "./services/matchService.js";
+import { parseResume, parseJobDescription, matchPortfolio } from "./matchServices.js";
 
 const app = express();
 const port = 5000;
 
 import cors from "cors";
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000',  // Allow requests from React frontend
+  methods: ['GET', 'POST'],  // Allow specific methods
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}));
 
 app.use(express.json());
 
@@ -46,6 +50,7 @@ app.post("/api/match", async (req, res) => {
         res.status(500).json({ success: false, message: "Error matching resume with job description" });
     }
 });
+
 
 app.listen(port, () => {
   console.log(`Express server running on http://localhost:${port}`);
