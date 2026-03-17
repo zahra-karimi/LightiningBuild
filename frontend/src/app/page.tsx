@@ -57,7 +57,7 @@ export default function Home() {
         onClick={handleSubmit}
         className="mt-6 bg-blue-600 text-white p-3 rounded-md w-full md:w-auto hover:bg-blue-700 transition duration-300"
       >
-        Submit
+        Search
       </button>
   
      
